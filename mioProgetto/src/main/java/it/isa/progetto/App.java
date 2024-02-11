@@ -1,13 +1,27 @@
 package it.isa.progetto;
 
-/**
- * Hello world!
- *
- */
+
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-    }
-}
+
+        
+        App.showFrame();
+        
+        
+        
+
+        
+     }
+
+     public static FirstFrame showFrame()
+        {
+            FirstFrame firstFrame = new FirstFrame();
+            return firstFrame;
+        }
+   
+ }
+
+

@@ -1,20 +1,15 @@
 package it.isa.progetto;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-{
-    /**
-     * Rigorous Test :-)
-     */
+public class AppTest {
+    
+
     @Test
-    public void shouldAnswerWithTrue()
+    public void appTest()
     {
-        assertTrue( true );
+        String[] args = new String[2];
+        new App();
+        App.main(args);
     }
 }
