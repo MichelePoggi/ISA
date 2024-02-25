@@ -61,7 +61,7 @@ public class DAOFactory {
   }
 
   
-  public BranoDAO getBranoDAO() {
-    return new BranoDAO(connection);
+  public LibroDAO getLibroDAO() {
+    return new LibroDAO(connection);
   }
 }

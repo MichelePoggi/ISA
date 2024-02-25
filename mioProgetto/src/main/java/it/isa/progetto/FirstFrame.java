@@ -23,7 +23,7 @@ public class FirstFrame extends JFrame {
     private RegisterPanelController rpc = new RegisterPanelController();
     private MainPanelController mpc = new MainPanelController();
     private Utente utente= new Utente();
-    private MainPanel mp = new MainPanel(mpc.findAllBrani(), utente);
+    private MainPanel mp = new MainPanel(mpc.findAllLibri(), utente);
 
 
     public FirstFrame() 
@@ -33,7 +33,7 @@ public class FirstFrame extends JFrame {
 
         
     
-        super("Brinafy");
+        super("AudioBooks");
         File file = new File("songs/l.mp3");
         file.getParentFile().mkdirs();
         try{
@@ -90,7 +90,7 @@ public class FirstFrame extends JFrame {
                     JOptionPane.showMessageDialog(lp, "Login avvenuto con successo!");
                 
                     
-                    mp= new MainPanel(mpc.findAllBrani(), utente);
+                    mp= new MainPanel(mpc.findAllLibri(), utente);
                     mp.jButton4.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e)
@@ -133,7 +133,7 @@ public class FirstFrame extends JFrame {
             
                            catch(MissingObjectException ex){
             
-                            JOptionPane.showMessageDialog( mp, "Nessun Brano!");
+                            JOptionPane.showMessageDialog( mp, "Nessun Libro!");
             
                            }
                           

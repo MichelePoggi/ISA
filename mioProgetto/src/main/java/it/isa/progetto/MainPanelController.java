@@ -16,47 +16,47 @@ import java.awt.Desktop;
 
 public class MainPanelController {
 
-    public int contaAllSong() throws MissingObjectException
+    public int contaAllBooks() throws MissingObjectException
     {
         DAOFactory dao = new DAOFactory();
         dao.beginTransaction();
-        BranoDAO branoDao = dao.getBranoDAO();
-        int count = branoDao.countAllBrani();
+        LibroDAO libroDao = dao.getLibroDAO();
+        int count = libroDao.countAllLibri();
         dao.commitTransaction();
         dao.closeTransaction();
         return count;
     }
 
-    public List<Brano> findAllBrani() 
+    public List<Libro> findAllLibri() 
     {
         DAOFactory dao = new DAOFactory();
-        List<Brano> brani = new ArrayList<Brano>();
+        List<Libro> libri = new ArrayList<Libro>();
         dao.beginTransaction();
-        BranoDAO branoDao = dao.getBranoDAO();
-        brani  = branoDao.findAllBrani();
+        LibroDAO libroDao = dao.getLibroDAO();
+        libri  = libroDao.findAllLibri();
         dao.commitTransaction();
         dao.closeTransaction();
-        return brani;
+        return libri;
     }
 
-    public List<Brano> findByString(String stringa) throws MissingObjectException
+    public List<Libro> findByString(String stringa) throws MissingObjectException
     {
         DAOFactory dao = new DAOFactory();
-        List<Brano> brani = new ArrayList<Brano>();
+        List<Libro> libri = new ArrayList<Libro>();
         dao.beginTransaction();
-        BranoDAO branoDao = dao.getBranoDAO();
-        brani  = branoDao.findByString(stringa);
+        LibroDAO libroDao = dao.getLibroDAO();
+        libri  = libroDao.findByString(stringa);
         dao.commitTransaction();
         dao.closeTransaction();
-        return brani;
+        return libri;
     }
 
-    public String makeButtonText(Brano brano, Utente utente)
+    public String makeButtonText(Libro libro, Utente utente)
     {
-        if(utente.getHaAscoltato().containsKey(brano))
-        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+utente.getHaAscoltato(brano).intValue());
+        if(utente.getHaAscoltato().containsKey(libro))
+        return ("Titolo: "+libro.getTitolo()+"\t Lettore: "+libro.getLettore()+"\t Autore: "+libro.getAutore()+"\t Ascolti: "+utente.getHaAscoltato(libro).intValue());
         else
-        return ("Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: 0");
+        return ("Titolo: "+libro.getTitolo()+"\t Lettore: "+libro.getLettore()+"\t Autore: "+libro.getAutore()+"\t Ascolti: 0");
     }
 
     public void play(String id, Utente utente) 
@@ -64,18 +64,18 @@ public class MainPanelController {
         
         final String FILEPATH = "songs/l.mp3";
         final File file = new File(FILEPATH);
-        Brano brano;
+        Libro libro;
         DAOFactory dao = new DAOFactory();
         dao.beginTransaction();
-        BranoDAO branoDao = dao.getBranoDAO();
+        LibroDAO libroDao = dao.getLibroDAO();
         UtenteDAO uDao = dao.getUtenteDAO();
         try{
-        brano=branoDao.findById(Integer.parseInt(id));
-        uDao.creaAscolto(brano, utente);
+        libro=libroDao.findById(Integer.parseInt(id));
+        uDao.creaAscolto(libro, utente);
         dao.commitTransaction();
         dao.closeTransaction();
         OutputStream os = new FileOutputStream(file);
-        os.write(brano.getCanzone());
+        os.write(libro.getAudio());
         os.close();
         
         Desktop.getDesktop().open(new File("songs/l.mp3"));

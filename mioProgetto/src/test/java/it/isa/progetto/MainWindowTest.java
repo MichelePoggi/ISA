@@ -92,9 +92,9 @@ public class MainWindowTest extends AbstractUiTest {
         this.conferma1.requireVisible().requireEnabled().click();
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
-        this.song = this.frame.button(JButtonMatcher .withName("1").andShowing());
+        this.song = this.frame.button(JButtonMatcher .withName("29").andShowing());
         this.song.requireVisible().requireEnabled().click();
-        this.song = this.frame.button(JButtonMatcher .withName("1").andShowing());
+        this.song = this.frame.button(JButtonMatcher .withName("29").andShowing());
         this.song.requireVisible().requireEnabled().click();
         this.cerca1=this.frame.textBox(JTextComponentMatcher.withName("Cerca1").andShowing());
         this.invio1 = this.frame.button(JButtonMatcher .withName("Invio1").andShowing());
@@ -103,9 +103,9 @@ public class MainWindowTest extends AbstractUiTest {
         this.ok = this.frame.button(JButtonMatcher.withText("OK"));
         this.ok.requireVisible().requireEnabled().click();
         this.cerca1.deleteText();
-        this.cerca1.enterText("money");
+        this.cerca1.enterText("Il Dottore Nero");
         this.invio1.requireVisible().requireEnabled().click();
-        this.song = this.frame.button(JButtonMatcher .withName("5").andShowing());
+        this.song = this.frame.button(JButtonMatcher .withName("28").andShowing());
         this.song.requireVisible().requireEnabled().click();
         this.logout = this.frame.button(JButtonMatcher .withName("Logout").andShowing());
         this.logout.requireVisible().requireEnabled().click();

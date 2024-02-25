@@ -91,7 +91,7 @@ public class UtenteDAO {
     public Utente findById(int id) throws MissingObjectException
     {
         Utente utente = new Utente();
-        Brano brano;
+        Libro libro;
         PreparedStatement ps;
 
         try{
@@ -121,7 +121,7 @@ public class UtenteDAO {
 
         sql= "SELECT *"
         +" FROM Ha_ascoltato"
-        +" INNER JOIN Brano ON Brano.ID=Ha_ascoltato.IDBrano"
+        +" INNER JOIN Libro ON Libro.ID=Ha_ascoltato.IDLibro"
         +" WHERE idUtente = ?";
         ps=conn.prepareStatement(sql);
         i=1;
@@ -131,9 +131,9 @@ public class UtenteDAO {
        {
             do
             {
-                brano = new Brano();
-                brano.setId(rss.getInt("ID"));
-                utente.setHaAscoltato(brano, Integer.valueOf(rss.getInt("Ascolti")));
+                libro = new Libro();
+                libro.setId(rss.getInt("ID"));
+                utente.setHaAscoltato(libro, Integer.valueOf(rss.getInt("Ascolti")));
 
             }
 
@@ -162,7 +162,7 @@ public class UtenteDAO {
     {
         Utente utente = new Utente();
         PreparedStatement ps;
-        Brano brano;
+        Libro libro;
 
         try{
         String sql = "SELECT *"
@@ -191,7 +191,7 @@ public class UtenteDAO {
 
         sql= "SELECT *"
         +" FROM Ha_ascoltato"
-        +" INNER JOIN Brano ON Brano.ID=Ha_ascoltato.IDBrano"
+        +" INNER JOIN Libro ON Libro.ID=Ha_ascoltato.IDLibro"
         +" WHERE idUtente = ?";
         ps=conn.prepareStatement(sql);
         i=1;
@@ -201,9 +201,9 @@ public class UtenteDAO {
        {
             do
             {
-                brano = new Brano();
-                brano.setId(rss.getInt("ID"));
-                utente.setHaAscoltato(brano, Integer.valueOf(rss.getInt("Ascolti")));
+                libro = new Libro();
+                libro.setId(rss.getInt("ID"));
+                utente.setHaAscoltato(libro, Integer.valueOf(rss.getInt("Ascolti")));
 
             }
 
@@ -275,18 +275,18 @@ public class UtenteDAO {
         catch(SQLException e) {System.out.println(e.getMessage());}
     }
 
-    public void creaAscolto(Brano brano, Utente utente)
+    public void creaAscolto(Libro libro, Utente utente)
     {  PreparedStatement ps;
         try{
 
             String sql="SELECT *"
             +" FROM Ha_ascoltato"
-            +" WHERE IDUtente = ? AND IDBrano = ?";
+            +" WHERE IDUtente = ? AND IDLibro = ?";
 
             ps=conn.prepareStatement(sql);
             int i=1;
             ps.setInt(i++, utente.getId());
-            ps.setInt(i++, brano.getId());
+            ps.setInt(i++, libro.getId());
             ResultSet rs = ps.executeQuery();
             boolean exist= false;
             if(rs.next())
@@ -298,12 +298,12 @@ public class UtenteDAO {
                 int ascolti = rs.getInt("Ascolti");
                 sql= "UPDATE Ha_ascoltato"
                     +" SET Ascolti=?"
-                    +" WHERE IDUtente=? AND IDBrano=?";
+                    +" WHERE IDUtente=? AND IDLibro=?";
                     ps=conn.prepareStatement(sql);
                     i=1;
                     ps.setInt(i++, ascolti+1);
                     ps.setInt(i++, utente.getId());
-                    ps.setInt(i++, brano.getId());
+                    ps.setInt(i++, libro.getId());
                     ps.executeUpdate();
                     ps.close();
             }
@@ -316,7 +316,7 @@ public class UtenteDAO {
                 ps=conn.prepareStatement(sql);
                 i=1;
                 ps.setInt(i++, utente.getId());
-                ps.setInt(i++, brano.getId());
+                ps.setInt(i++, libro.getId());
                 ps.executeUpdate();
                 ps.close();
             }

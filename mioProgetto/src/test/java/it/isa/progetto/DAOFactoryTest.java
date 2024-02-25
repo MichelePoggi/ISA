@@ -12,14 +12,14 @@ public class DAOFactoryTest {
     {
         DAOFactory dao = new DAOFactory();
         dao.beginTransaction();
-        BranoDAO bd= dao.getBranoDAO();
+        LibroDAO bd= dao.getLibroDAO();
         UtenteDAO ud = dao.getUtenteDAO();
         try{
-        Brano brano = bd.findById(1);
+        Libro libro = bd.findById(1);
         Utente utente = ud.findById(111);
         dao.commitTransaction();
         dao.closeTransaction();
-        assertEquals(brano.getId(), 1);
+        assertEquals(libro.getId(), 1);
         assertEquals(utente.getId(), 111);
         }
         catch(Exception ex)

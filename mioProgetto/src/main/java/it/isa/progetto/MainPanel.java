@@ -22,15 +22,15 @@ import javax.swing.border.MatteBorder;
 
 /**
  *
- * @author matteobrina
+ * @author poggimichele
  */
 public class MainPanel extends javax.swing.JPanel implements ActionListener{
 
     /**
      * Creates new form NewJPanel3
      */
-    public MainPanel(List<Brano> brani, Utente utente) {
-        initComponents(brani, utente);
+    public MainPanel(List<Libro> libri, Utente utente) {
+        initComponents(libri, utente);
     }
     
     
@@ -42,7 +42,7 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
      */
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents(List<Brano> brani, Utente utente) {
+    private void initComponents(List<Libro> libri, Utente utente) {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -130,12 +130,12 @@ public class MainPanel extends javax.swing.JPanel implements ActionListener{
         
             
             
-            for(int i=0; i<brani.size(); i++)
+            for(int i=0; i<libri.size(); i++)
                 {
             
                     JPanel panel = new JPanel();
-                    JButton button = new JButton(mpc.makeButtonText(brani.get(i), utente));
-                    button.setName(Integer.toString(brani.get(i).getId()));
+                    JButton button = new JButton(mpc.makeButtonText(libri.get(i), utente));
+                    button.setName(Integer.toString(libri.get(i).getId()));
                     panel.add(button);
                     button.addActionListener(this);
                     panel.setBorder(new MatteBorder(0, 0, 1, 0, Color.GRAY));

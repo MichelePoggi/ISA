@@ -16,16 +16,16 @@ import org.junit.Test;
 public class MainPanelControllerTest{
 
     @Test
-    public void contaAllSongTest()
+    public void contaAllBooksTest()
     {
         MainPanelController mpc = new MainPanelController();
         try
         {
-            int a = mpc.contaAllSong();
+            int a = mpc.contaAllBooks();
             DAOFactory dao = new DAOFactory();
             dao.beginTransaction();
-            BranoDAO bd = dao.getBranoDAO();
-            int b = bd.countAllBrani();
+            LibroDAO bd = dao.getLibroDAO();
+            int b = bd.countAllLibri();
             dao.commitTransaction();
             dao.closeTransaction();
             assertEquals(a, b);
@@ -42,27 +42,27 @@ public class MainPanelControllerTest{
     public void findByStringTest()
     {
         MainPanelController mpc = new MainPanelController();
-        List<Brano> brani = new ArrayList<Brano>();
+        List<Libro> libri = new ArrayList<Libro>();
         try{
-                brani= mpc.findByString("money");
-                Brano brano = new Brano();
-            Brano brano2 = new Brano();
-            File file = new File("src/test/java/it/isa/progetto/Files/05. Mone.mp3");
+                libri= mpc.findByString("Il Dottore Nero");
+                Libro libro = new Libro();
+            Libro libro2 = new Libro();
+            File file = new File("src/test/java/it/isa/progetto/Files/Il_Dottore_Nero.mp3");
             byte[] bytes = Files.readAllBytes(file.toPath());
-            brano.setId(5);
-            brano.setTitolo("Money");
-            brano.setAlbum("The Dark Side Of The Moon");
-            brano.setArtista("Pink Floyd");
-            brano.setCanzone(bytes);
-            brano2=brani.get(0);
-            assertEquals(brano.getId(), brano2.getId());
-            assertEquals(brano.getTitolo(), brano2.getTitolo());
-            assertEquals(brano.getAlbum(), brano2.getAlbum());
-            assertEquals(brano.getArtista(), brano2.getArtista());
+            libro.setId(28);
+            libro.setTitolo("Il Dottore Nero");
+            libro.setLettore("La Via Della Voce");
+            libro.setAutore("A.C.Doyle");
+            libro.setAudio(bytes);
+            libro2=libri.get(0);
+            assertEquals(libro.getId(), libro2.getId());
+            assertEquals(libro.getTitolo(), libro2.getTitolo());
+            assertEquals(libro.getLettore(), libro2.getLettore());
+            assertEquals(libro.getAutore(), libro2.getAutore());
             boolean uguali=true;
-            for (int i=0; i<(brano.getCanzone().length); i++)
+            for (int i=0; i<(libro.getAudio().length); i++)
             {
-                if(brano.getCanzone()[i]!=brano2.getCanzone()[i])
+                if(libro.getAudio()[i]!=libro2.getAudio()[i])
                 uguali=false;
             }
             assertTrue(uguali);
@@ -83,21 +83,21 @@ public class MainPanelControllerTest{
     public void makeButtonTextTest()
     {
         MainPanelController mpc = new MainPanelController();
-        Brano brano = new Brano();
+        Libro libro = new Libro();
         Utente utente = new Utente();
-        HashMap<Brano, Integer> map = new HashMap<Brano, Integer>();
-        brano.setId(1);
-        brano.setTitolo("prova");
-        brano.setAlbum("prova");
-        brano.setArtista("prova");
+        HashMap<Libro, Integer> map = new HashMap<Libro, Integer>();
+        libro.setId(1);
+        libro.setTitolo("prova");
+        libro.setLettore("prova");
+        libro.setAutore("prova");
         utente.setId(1);
         Integer integer = Integer.valueOf(1);
-        String etichetta1= mpc.makeButtonText(brano, utente);
-        assertEquals(etichetta1, "Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: 0");
-        map.put(brano, integer);
+        String etichetta1= mpc.makeButtonText(libro, utente);
+        assertEquals(etichetta1, "Titolo: "+libro.getTitolo()+"\t Lettore: "+libro.getLettore()+"\t Autore: "+libro.getAutore()+"\t Ascolti: 0");
+        map.put(libro, integer);
         utente.setHaAscoltato(map);
-        String etichetta2=mpc.makeButtonText(brano, utente);
-        assertEquals(etichetta2, "Titolo: "+brano.getTitolo()+"\t Album: "+brano.getAlbum()+"\t Artista: "+brano.getArtista()+"\t Ascolti: "+utente.getHaAscoltato(brano).intValue());
+        String etichetta2=mpc.makeButtonText(libro, utente);
+        assertEquals(etichetta2, "Titolo: "+libro.getTitolo()+"\t Lettore: "+libro.getLettore()+"\t Autore: "+libro.getAutore()+"\t Ascolti: "+utente.getHaAscoltato(libro).intValue());
 
     }
 

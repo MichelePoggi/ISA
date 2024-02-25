@@ -25,15 +25,15 @@ public class UtenteDAOTest {
 
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
 
             
             
         
         Utente utente1 = new Utente();
         Utente utente2 = new Utente();
-        Brano brano = new Brano();
-        brano.setId(1);
+        Libro libro = new Libro();
+        libro.setId(28);
 
        UtenteDAO dao = new UtenteDAO(con);
       
@@ -46,13 +46,13 @@ public class UtenteDAOTest {
        utente1 = dao.findById(id);
 
        
-       dao.creaAscolto(brano, utente1);
-        dao.creaAscolto(brano, utente1);
+       dao.creaAscolto(libro, utente1);
+        dao.creaAscolto(libro, utente1);
         
        utente1 = dao.findById(id);
-        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
+        HashMap<Libro, Integer> mappa = new HashMap<Libro, Integer>();
         Integer integer = Integer.valueOf(2);
-        mappa.put(brano, integer);
+        mappa.put(libro, integer);
         utente2.setHaAscoltato(mappa);
        
 
@@ -88,7 +88,7 @@ public class UtenteDAOTest {
 
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
             UtenteDAO dao = new UtenteDAO(con);
         
        dao.create("prova", "prova");
@@ -111,7 +111,7 @@ public class UtenteDAOTest {
         try
         {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
             UtenteDAO dao = new UtenteDAO(con);
            
             Utente utente1 = new Utente();
@@ -130,7 +130,7 @@ public class UtenteDAOTest {
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         
@@ -152,15 +152,15 @@ public class UtenteDAOTest {
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         Utente utente = new Utente();
-        Brano brano = new Brano();
+        Libro libro = new Libro();
         
        
         
-        dao.creaAscolto(brano, utente);
+        dao.creaAscolto(libro, utente);
         
        }
        catch(Exception e)
@@ -177,7 +177,7 @@ public void testFindByIDNotFoundException()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
 
         UtenteDAO dao = new UtenteDAO(con);
         
@@ -195,7 +195,7 @@ public void testFindByUsernameNotFoundException()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
             UtenteDAO dao = new UtenteDAO(con);
         
         
@@ -214,7 +214,7 @@ public void testFindByUsernameNotFoundException()
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         
@@ -237,7 +237,7 @@ public void testDeleteUtenteNotFoundException()
 {
     try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+            Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
             UtenteDAO dao = new UtenteDAO(con);
         Utente utente = new Utente();
         utente.setUsername("0");
@@ -256,7 +256,7 @@ public void testDeleteUtenteNotFoundException()
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         
@@ -278,7 +278,7 @@ public void testDeleteUtenteNotFoundException()
     {
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/PROGETTO2", "root", "Internazionale99!");
+        Connection con= DriverManager.getConnection("jdbc:mysql://localhost:3306/ISA?user=root&password= &useSSL=false");
         UtenteDAO dao = new UtenteDAO(con);
         con.close();
         

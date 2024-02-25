@@ -7,7 +7,7 @@ public class Utente {
     private int id;
     private String username;
     private String password;
-    private HashMap<Brano, Integer> haAscoltato = new HashMap<Brano, Integer>();
+    private HashMap<Libro, Integer> haAscoltato = new HashMap<Libro, Integer>();
     
 
     public int getId()
@@ -40,24 +40,24 @@ public class Utente {
         this.password=password;
     }
 
-    public void setHaAscoltato(HashMap<Brano, Integer> haAscoltato)
+    public void setHaAscoltato(HashMap<Libro, Integer> haAscoltato)
     {
         this.haAscoltato=haAscoltato;
     }
 
-    public HashMap<Brano, Integer> getHaAscoltato()
+    public HashMap<Libro, Integer> getHaAscoltato()
     {
         return this.haAscoltato;
     }
 
-    public Integer getHaAscoltato(Brano brano)
+    public Integer getHaAscoltato(Libro libro)
     {
-        return this.haAscoltato.get(brano);
+        return this.haAscoltato.get(libro);
     }
 
-    public void setHaAscoltato(Brano brano, Integer ascolti)
+    public void setHaAscoltato(Libro libro, Integer ascolti)
     {
-        this.haAscoltato.put(brano, ascolti);
+        this.haAscoltato.put(libro, ascolti);
     }
 
    

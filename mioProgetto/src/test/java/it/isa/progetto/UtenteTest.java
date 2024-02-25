@@ -109,12 +109,12 @@ public class UtenteTest {
     public void testSetHaAscoltato() throws NoSuchFieldException, IllegalAccessException {
         //given
         final Utente utente = new Utente();
-        Brano brano = new Brano();
+        Libro libro = new Libro();
         Integer integer = Integer.valueOf(6);
-        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
-        HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
-        mappa.put(brano, integer);
-        mappa2.put(brano, integer);
+        HashMap<Libro, Integer> mappa = new HashMap<Libro, Integer>();
+        HashMap<Libro, Integer> mappa2 = new HashMap<Libro, Integer>();
+        mappa.put(libro, integer);
+        mappa2.put(libro, integer);
 
 
 
@@ -133,18 +133,18 @@ public class UtenteTest {
     public void testGetHaAscoltato() throws NoSuchFieldException, IllegalAccessException {
         //given
         final Utente utente = new Utente();
-        Brano brano = new Brano();
+        Libro libro = new Libro();
         Integer integer = Integer.valueOf(6);
-        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
-        HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
-        mappa.put(brano, integer);
-        mappa2.put(brano, integer);
+        HashMap<Libro, Integer> mappa = new HashMap<Libro, Integer>();
+        HashMap<Libro, Integer> mappa2 = new HashMap<Libro, Integer>();
+        mappa.put(libro, integer);
+        mappa2.put(libro, integer);
         final Field field = utente.getClass().getDeclaredField("haAscoltato");
         field.setAccessible(true);
         field.set(utente, mappa);
 
         //when
-        final HashMap<Brano, Integer> result = utente.getHaAscoltato();
+        final HashMap<Libro, Integer> result = utente.getHaAscoltato();
 
         //then
         assertEquals("field wasn't retrieved properly", result, mappa2);
@@ -154,17 +154,17 @@ public class UtenteTest {
     public void testSetHaAscoltato2() throws NoSuchFieldException, IllegalAccessException {
         //given
         final Utente utente = new Utente();
-        Brano brano = new Brano();
+        Libro libro = new Libro();
         Integer ascolti = Integer.valueOf(6);
         
-        HashMap<Brano, Integer> mappa2 = new HashMap<Brano, Integer>();
-        mappa2.put(brano, ascolti);
+        HashMap<Libro, Integer> mappa2 = new HashMap<Libro, Integer>();
+        mappa2.put(libro, ascolti);
 
 
 
 
         //when
-        utente.setHaAscoltato(brano, ascolti);
+        utente.setHaAscoltato(libro, ascolti);
 
         //then
         final Field field = utente.getClass().getDeclaredField("haAscoltato");
@@ -177,18 +177,18 @@ public class UtenteTest {
     public void testGetHaAscoltato2() throws NoSuchFieldException, IllegalAccessException {
         //given
         final Utente utente = new Utente();
-        Brano brano = new Brano();
+        Libro libro = new Libro();
         Integer integer = Integer.valueOf(6);
-        HashMap<Brano, Integer> mappa = new HashMap<Brano, Integer>();
+        HashMap<Libro, Integer> mappa = new HashMap<Libro, Integer>();
         
-        mappa.put(brano, integer);
+        mappa.put(libro, integer);
         
         final Field field = utente.getClass().getDeclaredField("haAscoltato");
         field.setAccessible(true);
         field.set(utente, mappa);
 
         //when
-        final Integer result = utente.getHaAscoltato(brano);
+        final Integer result = utente.getHaAscoltato(libro);
 
         //then
         assertEquals("field wasn't retrieved properly", result, integer);
